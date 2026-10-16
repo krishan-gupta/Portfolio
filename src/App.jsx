@@ -6,6 +6,7 @@ import { SlingTop } from './components/SlingTop/SlingTop';
 import { SocialDock } from './components/SocialDock/SocialDock';
 import { SideTab } from './components/SideTab/SideTab';
 import { Loader } from './components/Loader/Loader';
+import { Analytics } from '@vercel/analytics/react';
 
 // Pages
 import { HomePage } from './pages/Home';
@@ -70,6 +71,7 @@ export default function App() {
         <Loader onComplete={() => setIntroFinished(true)} />
       )}
       <MainRouter />
+      <Analytics />
     </RouterProvider>
   );
 }
