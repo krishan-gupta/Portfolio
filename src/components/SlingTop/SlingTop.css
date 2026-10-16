@@ -1,0 +1,251 @@
+.sling-scroll-top {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) scale(0.9);
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              visibility 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sling-scroll-top.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.sling-well-wrapper {
+  position: relative;
+  width: var(--sl-size, 50px);
+  height: var(--sl-size, 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG layer for bands, well ring, and charge arc */
+.sling-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--sl-svg, 76px);
+  height: var(--sl-svg, 76px);
+  margin-top: calc(var(--sl-svg, 76px) * -0.5);
+  margin-left: calc(var(--sl-svg, 76px) * -0.5);
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Outer well ring */
+.sling-well {
+  fill: rgba(22, 18, 15, 0.92);
+  stroke: rgba(255, 140, 42, 0.45);
+  stroke-width: var(--sl-stroke, 2.5px);
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.75));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: stroke 0.25s ease, filter 0.25s ease;
+}
+
+.sling-scroll-top:hover .sling-well {
+  stroke: rgba(255, 160, 55, 0.85);
+  filter: drop-shadow(0 8px 24px rgba(255, 122, 26, 0.4));
+}
+
+.sling-scroll-top[data-held] .sling-well {
+  stroke: rgba(255, 140, 42, 0.65);
+}
+
+.sling-scroll-top[data-armed] .sling-well {
+  stroke: #ff9d3b;
+  filter: drop-shadow(0 0 16px rgba(255, 157, 59, 0.85));
+}
+
+/* Slingshot rubber tension bands */
+.sling-band {
+  fill: none;
+  stroke: rgba(255, 140, 42, 0.8);
+  stroke-width: var(--sl-stroke, 2.5px);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sling-band--hot {
+  stroke: #ffb347;
+  stroke-width: calc(var(--sl-stroke, 2.5px) + 0.8px);
+  filter: drop-shadow(0 0 6px #ff7a1a);
+}
+
+/* Arc tension / charge meter */
+.sling-arc {
+  fill: none;
+  stroke: #ff7a1a;
+  stroke-width: calc(var(--sl-stroke, 2.5px) + 0.6px);
+  stroke-linecap: round;
+  transform-origin: 0 0;
+  filter: drop-shadow(0 0 8px rgba(255, 122, 26, 0.9));
+  transition: opacity 0.15s ease;
+}
+
+/* Moving wrapper containing the pad */
+.sling-move {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--sl-size, 50px);
+  height: var(--sl-size, 50px);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* Draggable Projectile Pad */
+.sling-pad {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 140, 42, 0.65);
+  background: linear-gradient(135deg, rgba(28, 22, 18, 0.96), rgba(16, 13, 10, 0.98));
+  color: #ff9d3b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: auto;
+  box-shadow: 
+    0 4px 18px rgba(0, 0, 0, 0.8), 
+    0 0 16px rgba(255, 122, 26, 0.35),
+    inset 0 1px 1px rgba(255, 179, 71, 0.3);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease, color 0.2s ease;
+  outline: none;
+}
+
+.sling-pad:hover {
+  border-color: rgba(255, 160, 55, 0.95);
+  color: #ffbe73;
+  box-shadow: 
+    0 6px 22px rgba(0, 0, 0, 0.85), 
+    0 0 22px rgba(255, 122, 26, 0.65),
+    inset 0 0 10px rgba(255, 140, 42, 0.25);
+}
+
+.sling-pad:active,
+.sling-scroll-top[data-held] .sling-pad {
+  cursor: grabbing;
+  background: linear-gradient(135deg, rgba(38, 28, 20, 0.98), rgba(22, 16, 12, 1));
+  border-color: #ff7a1a;
+  color: #ffffff;
+  box-shadow: 
+    0 6px 26px rgba(0, 0, 0, 0.9), 
+    0 0 26px rgba(255, 122, 26, 0.8),
+    inset 0 0 14px rgba(255, 140, 42, 0.4);
+}
+
+.sling-scroll-top[data-armed] .sling-pad {
+  background: linear-gradient(135deg, rgba(50, 32, 20, 1), rgba(28, 18, 12, 1));
+  border-color: #ffaa33;
+  color: #ffffff;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.95), 
+    0 0 32px rgba(255, 157, 59, 1),
+    inset 0 0 14px rgba(255, 157, 59, 0.6);
+  animation: armedPulse 0.7s infinite alternate ease-in-out;
+}
+
+@keyframes armedPulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* Icon */
+.sling-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.sling-icon svg {
+  display: block;
+}
+
+/* Burst particle sparks */
+.sling-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--sl-dot, 6px);
+  height: var(--sl-dot, 6px);
+  margin-top: calc(var(--sl-dot, 6px) * -0.5);
+  margin-left: calc(var(--sl-dot, 6px) * -0.5);
+  border-radius: 50%;
+  background: #ffb347;
+  box-shadow: 0 0 10px 2px rgba(255, 122, 26, 0.95), 0 0 18px 4px rgba(255, 179, 71, 0.6);
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Text label */
+.sling-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #ff9d3b;
+  text-shadow: 0 0 8px rgba(255, 157, 59, 0.45);
+  transition: color var(--transition-fast), opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+}
+
+.sling-scroll-top:hover .sling-label {
+  color: #ffbe73;
+  text-shadow: 0 0 12px rgba(255, 157, 59, 0.7);
+}
+
+.sling-scroll-top[data-held] .sling-label {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+@media (max-width: 768px) {
+  .sling-scroll-top {
+    bottom: 1.15rem;
+    right: 0.85rem;
+    gap: 0.25rem;
+    transform: translateY(14px) scale(0.85);
+  }
+  .sling-scroll-top.visible {
+    transform: translateY(0) scale(0.92);
+  }
+  .sling-label {
+    font-size: 0.58rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sling-scroll-top {
+    transition: opacity 0.2s ease;
+    transform: none !important;
+  }
+  .sling-scroll-top[data-armed] .sling-pad {
+    animation: none;
+  }
+}

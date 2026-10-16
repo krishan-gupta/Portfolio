@@ -1,0 +1,162 @@
+.social-dock-wrapper {
+  position: fixed;
+  bottom: 2.5rem;
+  left: 2rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.65rem;
+  background: rgba(20, 16, 13, 0.94);
+  border: 1.5px solid rgba(255, 140, 42, 0.45);
+  border-radius: var(--radius-full);
+  box-shadow: 
+    0 10px 35px rgba(0, 0, 0, 0.75), 
+    0 0 24px rgba(255, 122, 26, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all var(--transition-normal);
+}
+
+.social-dock-wrapper:hover {
+  border-color: rgba(255, 160, 55, 0.7);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.8), 
+    0 0 30px rgba(255, 122, 26, 0.4);
+}
+
+.dock-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.dock-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.25s ease;
+}
+
+/* LinkedIn Glow (Luminous Blue) */
+.dock-item-linkedin {
+  background: rgba(10, 102, 194, 0.16);
+  border: 1.5px solid rgba(10, 102, 194, 0.65);
+  color: #0A66C2;
+  box-shadow: 
+    0 0 14px rgba(10, 102, 194, 0.5), 
+    inset 0 0 8px rgba(10, 102, 194, 0.25);
+}
+
+.dock-item-linkedin .dock-icon {
+  filter: drop-shadow(0 0 6px rgba(10, 102, 194, 0.95));
+}
+
+.dock-item-linkedin:hover {
+  background: rgba(10, 102, 194, 0.3);
+  border-color: #38bdf8;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 0 24px rgba(10, 102, 194, 0.9), 
+    0 0 38px rgba(56, 189, 248, 0.55),
+    inset 0 0 10px rgba(10, 102, 194, 0.45);
+}
+
+.dock-item-linkedin:hover .dock-icon {
+  filter: drop-shadow(0 0 10px #38bdf8);
+}
+
+/* Email Glow (Vibrant Neon Amber/Orange) */
+.dock-item-email {
+  background: rgba(255, 122, 26, 0.16);
+  border: 1.5px solid rgba(255, 140, 42, 0.65);
+  color: #FF9D3B;
+  box-shadow: 
+    0 0 14px rgba(255, 122, 26, 0.5), 
+    inset 0 0 8px rgba(255, 122, 26, 0.25);
+}
+
+.dock-item-email .dock-icon {
+  filter: drop-shadow(0 0 6px rgba(255, 157, 59, 0.95));
+}
+
+.dock-item-email:hover {
+  background: rgba(255, 122, 26, 0.3);
+  border-color: #FFB347;
+  color: #FFB347;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 0 24px rgba(255, 122, 26, 0.95), 
+    0 0 38px rgba(255, 179, 71, 0.55),
+    inset 0 0 10px rgba(255, 122, 26, 0.45);
+}
+
+.dock-item-email:hover .dock-icon {
+  filter: drop-shadow(0 0 10px #FFB347);
+}
+
+/* GitHub Glow (Iconic Contribution Green) */
+.dock-item-github {
+  background: rgba(35, 134, 54, 0.18);
+  border: 1.5px solid rgba(57, 211, 83, 0.65);
+  color: #39D353;
+  box-shadow: 
+    0 0 14px rgba(57, 211, 83, 0.5), 
+    inset 0 0 8px rgba(57, 211, 83, 0.25);
+}
+
+.dock-item-github .dock-icon {
+  filter: drop-shadow(0 0 6px rgba(57, 211, 83, 0.95));
+}
+
+.dock-item-github:hover {
+  background: rgba(35, 134, 54, 0.32);
+  border-color: #56FF7A;
+  color: #56FF7A;
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 
+    0 0 24px rgba(57, 211, 83, 0.95), 
+    0 0 38px rgba(34, 197, 94, 0.7), 
+    inset 0 0 10px rgba(57, 211, 83, 0.45);
+}
+
+.dock-item-github:hover .dock-icon {
+  filter: drop-shadow(0 0 10px #56FF7A);
+}
+
+/* Tooltip */
+.dock-tooltip {
+  position: absolute;
+  top: -34px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .social-dock-wrapper {
+    display: none;
+  }
+}
