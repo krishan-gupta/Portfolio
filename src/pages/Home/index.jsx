@@ -508,7 +508,59 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Row Group 2: Hackathons */}
+            {/* Row Group 2: Certifications */}
+            <div className="recognition-group">
+              <h3 className="achievement-column-title">Certifications</h3>
+              <div className="recognition-cards-grid">
+                {certifications.map((item) => {
+                  const targetTrack = item.tracks?.[0] || 'developer';
+                  const resumeUrl = `/resume/${targetTrack}#cert-${item.id}`;
+                  return (
+                    <div
+                      key={item.id}
+                      className="compact-item-card compact-cert-card"
+                      onClick={() => navigate(resumeUrl)}
+                      role="link"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          navigate(resumeUrl);
+                        }
+                      }}
+                    >
+                      <div className="compact-item-meta">
+                        <span className="compact-item-issuer">{item.issuer}</span>
+                        <span>{item.date}</span>
+                      </div>
+                      <h4 className="compact-item-title">
+                        <span className="compact-item-link">
+                          {item.title}
+                          <span className="compact-link-icon" aria-hidden="true">→</span>
+                        </span>
+                      </h4>
+                      <p className="compact-item-desc">{item.description}</p>
+                      {item.credentialUrl && item.credentialUrl.startsWith('http') && (
+                        <div className="compact-item-actions">
+                          <a
+                            href={item.credentialUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="compact-verify-badge compact-external-badge"
+                            title="Verify directly on issuing portal"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Verify Credential ↗
+                          </a>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Row Group 3: Hackathons */}
             {achievementsData.competitions && achievementsData.competitions.length > 0 && (
               <div className="recognition-group">
                 <h3 className="achievement-column-title">Hackathons</h3>
@@ -563,58 +615,6 @@ export function HomePage() {
                 </div>
               </div>
             )}
-
-            {/* Row Group 3: Certifications */}
-            <div className="recognition-group">
-              <h3 className="achievement-column-title">Certifications</h3>
-              <div className="recognition-cards-grid">
-                {certifications.map((item) => {
-                  const targetTrack = item.tracks?.[0] || 'developer';
-                  const resumeUrl = `/resume/${targetTrack}#cert-${item.id}`;
-                  return (
-                    <div
-                      key={item.id}
-                      className="compact-item-card compact-cert-card"
-                      onClick={() => navigate(resumeUrl)}
-                      role="link"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          navigate(resumeUrl);
-                        }
-                      }}
-                    >
-                      <div className="compact-item-meta">
-                        <span className="compact-item-issuer">{item.issuer}</span>
-                        <span>{item.date}</span>
-                      </div>
-                      <h4 className="compact-item-title">
-                        <span className="compact-item-link">
-                          {item.title}
-                          <span className="compact-link-icon" aria-hidden="true">→</span>
-                        </span>
-                      </h4>
-                      <p className="compact-item-desc">{item.description}</p>
-                      {item.credentialUrl && item.credentialUrl.startsWith('http') && (
-                        <div className="compact-item-actions">
-                          <a
-                            href={item.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="compact-verify-badge compact-external-badge"
-                            title="Verify directly on issuing portal"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            Verify Credential ↗
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
           </div>
         </div>
       </section>
