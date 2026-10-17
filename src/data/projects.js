@@ -12,14 +12,13 @@ export const projects = [
     title: 'DhobiTrack: Campus Laundry Platform',
     category: 'web',
     tracks: ['developer'],
-    featured: true,
-    status: 'Built (dashboard); backend planned',
+    status: 'Built (dashboard), backend planned',
     date: '2026',
     summary: 'Admin dashboard for a campus laundry service with companion mobile app (Dhobi Terminal), designed for 15,000+ students.',
     tags: ['React', 'Vite', 'Tailwind', 'Capacitor.js', 'Fastify', 'PostgreSQL', 'Redis', 'Socket.io'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'Full-Stack Developer & Designer',
+    github: 'https://github.com/krishan-gupta/LaundroLink',
+    demo: 'https://krishangupta-laundrolink.hf.space/',
+    role: 'Campus project',
     overview: 'A campus utility platform built to solve queue bottlenecks and order tracking for college laundry operations. Built as an admin dashboard with a companion mobile app ("Dhobi Terminal") tailored to streamline order statuses, notifications, and pickups across 15,000+ campus residents.',
     problem: 'Manual slip tracking and unorganized pickup times in large-scale university hostels lead to lost garments, elongated wait times, and zero real-time visibility for students.',
     approach: 'Engineered an intuitive frontend dashboard in React and Vite with mobile packaging via Capacitor.js. Planned backend architecture leverages Fastify, PostgreSQL for relational order states, Redis for caching, and Socket.io for instantaneous order status pushes.',
@@ -28,37 +27,28 @@ export const projects = [
       { label: 'Campus Scale', value: '15,000+ Students' },
       { label: 'Interface Status', value: 'Built' },
       { label: 'Mobile Wrapper', value: 'Capacitor.js' }
-    ],
-    gallery: [
-      { label: 'Admin Dashboard Wireframe', caption: 'Status tracking, order intake, and customer lookups (TBD).' },
-      { label: 'Dhobi Terminal Mobile Interface', caption: 'Streamlined QR scanner view for service staff (TBD).' }
     ]
   },
   {
-    slug: 'noise-pollution-monitor',
-    title: 'AI-Powered Noise Pollution Monitor',
-    category: 'cloud',
+    slug: 'neuralabstract-retrieval-engine',
+    title: 'NeuralAbstract: Semantic-Retrieval-Engine',
+    category: 'ai-ml',
     tracks: ['ai-research'],
-    featured: true,
-    status: 'Foundational project',
-    date: '2025 — 2026',
-    summary: 'Hardware sound-monitoring device classifying ambient acoustic noise via an ML model and logging telemetry to the cloud.',
-    tags: ['ESP32', 'INMP441 Microphone', 'Edge Impulse', 'Firebase', 'IoT', 'Embedded ML'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'IoT & Embedded ML Developer',
-    overview: 'An environmental intelligence hardware monitor designed to detect, classify, and map urban noise pollution hot-spots in real time using embedded machine learning at the edge.',
-    problem: 'Traditional sound level meters only measure decibel volume (dB) without context; municipal bodies cannot distinguish between construction drilling, traffic honking, and emergency sirens.',
-    approach: 'Interfaced an INMP441 I2S digital microphone with an ESP32 microcontroller running an Edge Impulse acoustic classification neural network. Processed audio spectrograms locally and streamed telemetry to Firebase.',
-    result: 'Successfully achieved local inference classification on-device with low power consumption and continuous wireless telemetry logging.',
+    status: 'Working (active build)',
+    date: '2026',
+    summary: 'High-throughput semantic search and vector retrieval engine querying dense research documents and technical abstracts.',
+    tags: ['Python', 'Vector Search', 'sentence-transformers', 'FAISS', 'Embeddings', 'Information Retrieval'],
+    github: 'https://github.com/krishan-gupta/NeuralAbstract-Semantic-Retrieval-Engine',
+    demo: '',
+    role: 'AI/ML project',
+    overview: 'A dedicated semantic search and information retrieval engine designed to process, index, and query dense scientific abstracts and complex documentation using neural embeddings.',
+    problem: 'Traditional keyword search (BM25 or regex) fails when queries use synonyms, conceptual parallels, or phrasing different from the source literature.',
+    approach: 'Employs bi-encoder neural embedding models (sentence-transformers) combined with vector indexing via FAISS for sub-millisecond similarity matching across large abstract corpuses, featuring cosine similarity ranking and contextual passage extraction.',
+    result: 'Fully functioning vector search engine enabling intuitive natural language exploration across technical literature with low latency.',
     metrics: [
-      { label: 'Inference Device', value: 'ESP32' },
-      { label: 'Acoustic Model', value: 'Edge Impulse' },
-      { label: 'Cloud Database', value: 'Firebase' }
-    ],
-    gallery: [
-      { label: 'Hardware Circuit Topology', caption: 'ESP32 paired with INMP441 digital microphone (TBD).' },
-      { label: 'Edge Impulse Spectrogram', caption: 'Frequency bin classification and confusion matrix (TBD).' }
+      { label: 'Index Type', value: 'Dense Vector (FAISS)' },
+      { label: 'Embeddings', value: 'sentence-transformers' },
+      { label: 'Search Latency', value: 'Sub-millisecond' }
     ]
   },
   {
@@ -66,14 +56,13 @@ export const projects = [
     title: 'Context-Preserving Document Text Editor',
     category: 'hackathon',
     tracks: ['ai-research'],
-    featured: true,
     status: 'iQOO Hackathon 2026 concept (idea-screening stage)',
     date: '2026',
     summary: 'Privacy-first, fully on-device mobile app that edits text inside images while preserving the original background and graphics.',
     tags: ['On-Device OCR', 'Vision Models', 'Image Inpainting', 'Mobile AI', 'Hackathon'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'Concept Architect & AI Developer',
+    github: 'https://github.com/krishan-gupta/Textract',
+    demo: 'https://editwithtextract.vercel.app/',
+    role: 'Hackathon concept',
     overview: 'Conceived for the iQOO Hackathon 2026. A privacy-first mobile application that allows users to edit text directly inside flyers, posters, and documents without disturbing the underlying texture, typography aesthetics, or photographic background.',
     problem: 'Existing mobile editing tools either white-out the background, mismatch font styling, or require uploading sensitive documents to third-party cloud servers.',
     approach: 'Formulated an on-device pipeline: automated text bounding box detection, tap-to-edit interactions, inpainting to reconstruct the graphic background behind the letters, and style-matched re-rendering with font metric estimation. Includes undo, before/after comparative slider, and batch processing mode.',
@@ -82,36 +71,72 @@ export const projects = [
       { label: 'Privacy Mode', value: '100% On-Device' },
       { label: 'Hackathon', value: 'iQOO 2026' },
       { label: 'Features', value: '7 Core Workflows' }
-    ],
-    gallery: [
-      { label: 'Before / After Text Replacement Slider', caption: 'Preservation of complex background gradients (TBD).' },
-      { label: 'On-Device Inference Pipeline', caption: 'OCR detection, erase, inpaint, and re-render flow (TBD).' }
     ]
   },
   {
-    slug: 'semantic-search-engine',
-    title: 'Semantic Search Engine for Documents',
+    slug: 'noise-pollution-monitor',
+    title: 'AI-Powered Noise Pollution Monitor',
+    category: 'cloud',
+    tracks: ['ai-research'],
+    status: 'Foundational project',
+    date: '2025 — 2026',
+    summary: 'Hardware sound-monitoring device classifying ambient acoustic noise via an ML model and logging telemetry to the cloud.',
+    tags: ['ESP32', 'INMP441 Microphone', 'Edge Impulse', 'Firebase', 'IoT', 'Embedded ML'],
+    github: 'https://github.com/krishan-gupta/AI-Powered-Noise-Pollution-Monitor',
+    demo: 'https://noise-pollution-monitor.vercel.app/',
+    role: 'Embedded ML project',
+    overview: 'An environmental intelligence hardware monitor designed to detect, classify, and map urban noise pollution hot-spots in real time using embedded machine learning at the edge.',
+    problem: 'Traditional sound level meters only measure decibel volume (dB) without context; municipal bodies cannot distinguish between construction drilling, traffic honking, and emergency sirens.',
+    approach: 'Interfaced an INMP441 I2S digital microphone with an ESP32 microcontroller running an Edge Impulse acoustic classification neural network. Processed audio spectrograms locally and streamed telemetry to Firebase.',
+    result: 'Successfully achieved local inference classification on-device with low power consumption and continuous wireless telemetry logging.',
+    metrics: [
+      { label: 'Inference Device', value: 'ESP32' },
+      { label: 'Acoustic Model', value: 'Edge Impulse' },
+      { label: 'Cloud Database', value: 'Firebase' }
+    ]
+  },
+  {
+    slug: 'geovigil',
+    title: 'GeoVigil: AI Earth Intelligence & Temporal Analytics',
     category: 'ai-ml',
     tracks: ['ai-research'],
-    featured: false,
-    status: 'In progress (about 2-3 weeks)',
+    status: 'Built (SIH 2026)',
     date: '2026',
-    summary: 'Semantic search over documents with both local and API-based embeddings, paired with a web application front end.',
-    tags: ['sentence-transformers', 'FAISS / Chroma', 'OpenAI / Cohere', 'React', 'Python', 'Vector Search'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'ML Developer',
-    overview: 'The inaugural milestone in a series of 10 planned AI/ML portfolio builds. Enables intuitive natural language search across dense multi-page documentation and unstructured notes.',
-    problem: 'Keyword search (Ctrl+F) fails whenever documents use synonyms, conceptual parallels, or different phrasing than the user query.',
-    approach: 'Implementing dual embedding pathways: local compute using open-weight sentence-transformers for offline privacy, and API-based embeddings (OpenAI / Cohere) for scalable depth. Vector indices managed via FAISS / Chroma with a responsive React query dashboard.',
-    result: 'In active development; core vector indexing verified; web frontend in progress.',
+    summary: 'Longitudinal Earth Observation, dual-tier machine learning (16-yr OLS + Siamese U-Net), and urban sprawl forecasting across 15,643 km².',
+    tags: ['Sentinel-2', 'Landsat', 'Siamese U-Net', 'PyTorch', 'Computer Vision', 'GIS', 'Flask', 'Vite'],
+    github: 'https://github.com/krishan-gupta/GeoVigil',
+    demo: '',
+    role: 'AI/ML project',
+    overview: 'An end-to-end AI-powered Earth Observation intelligence platform ingesting a 16-year continuous baseline (2010–2025) of cloud-free multispectral satellite imagery (Sentinel-2 and harmonized Landsat-7/8/9) with Dynamic World 9-class LULC labels to quantify urban sprawl and ecological vulnerability across the 15,643 km² Pune District.',
+    problem: 'Municipal authorities and urban planners struggle to differentiate permanent concrete sprawl from cyclical vegetation loss or seasonal rainfall variations, resulting in unmonitored environmental stress and surface heat island spikes.',
+    approach: 'Engineered a dual-tier analytical pipeline: Tier-1 vectorized per-pixel Ordinary Least Squares (OLS) regression across 16 time steps with Pearson r confidence, and Tier-2 deep bitemporal Siamese U-Net (BCE + Soft Dice loss) for non-linear morphological change detection. Includes 2030 sprawl extrapolation and Surface Urban Heat Island (SUHI) proxy modeling.',
+    result: 'Calibrated across all 13 talukas of Pune District with an interactive photography-first intelligence dashboard, raster pixel inspector, and automated situation report generator.',
     metrics: [
-      { label: 'Embeddings', value: 'Local + API' },
-      { label: 'Vector Index', value: 'FAISS / Chroma' },
-      { label: 'Portfolio Series', value: 'Project 1 of 10' }
-    ],
-    gallery: [
-      { label: 'Semantic Similarity Graph', caption: 'Cosine distance projection of retrieved passages (TBD).' }
+      { label: 'Coverage Area', value: '15,643 km²' },
+      { label: 'Temporal Baseline', value: '16 Years (2010–2025)' },
+      { label: 'ML Models', value: 'OLS + Siamese U-Net' }
+    ]
+  },
+  {
+    slug: 'ai-posture-corrector',
+    title: 'AI Posture Corrector & Virtual Gym Trainer',
+    category: 'ai-ml',
+    tracks: ['ai-research'],
+    status: 'Built (Interdisciplinary Project)',
+    date: '2026',
+    summary: 'Vision-based virtual trainer computing 3D camera-invariant joint angles via MediaPipe for real-time posture correction and rep counting.',
+    tags: ['Python', 'OpenCV', 'MediaPipe', '3D Pose Estimation', 'NumPy', 'Biomechanics'],
+    github: 'https://github.com/krishan-gupta/AI-Posture-Corrector',
+    demo: '',
+    role: 'AI/ML project',
+    overview: 'An intelligent, vision-based virtual trainer and workout assistant designed to guide gym and home exercises with accurate biomechanical form without expensive wearable sensors.',
+    problem: 'Exercising with incorrect posture leads to chronic joint strain and musculoskeletal injuries, while professional coaching is inaccessible or cost-prohibitive for many home lifters.',
+    approach: 'Leveraged Google MediaPipe pose_world_landmarks to compute true 3D Euclidean joint angles immune to camera tilt or perspective distortion. Features automatic user viewpoint detection, Exponential Moving Average (EMA) landmark jitter smoothing, hysteresis feedback debouncing, and biomechanical state machines tracking concentric, peak, and eccentric phases for Bicep Curls, Squats, and Tricep Extensions.',
+    result: 'Delivered an interactive virtual workout trainer operating at high frame rates with real-time HUD visual cues and clean repetition verification.',
+    metrics: [
+      { label: 'Joint Geometry', value: '3D Camera-Invariant' },
+      { label: 'Motion Smoothing', value: 'Temporal EMA' },
+      { label: 'Supported Movements', value: 'Curls, Squats, Triceps' }
     ]
   },
   {
@@ -119,14 +144,13 @@ export const projects = [
     title: 'CineCipher: Movie Discovery Platform',
     category: 'web',
     tracks: ['developer'],
-    featured: false,
     status: 'Foundational project',
     date: '2025',
     summary: 'Movie recommendation platform that combines rich film metadata, ratings, and embedded trailers.',
     tags: ['React', 'TMDB API', 'YouTube API', 'CSS3', 'Web App'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'Frontend Developer',
+    github: 'https://github.com/krishan-gupta/CineCipher',
+    demo: 'https://cinecipher.vercel.app/',
+    role: 'Web project',
     overview: 'A visual discovery engine aggregating movie intelligence, genres, cast details, and synchronized video previews into an engaging single-page application.',
     problem: 'Users frequently bounce between search engines, IMDb, and video streaming apps just to evaluate film recommendations.',
     approach: 'Integrated TMDB API for dynamic search, trending filters, and metadata with the YouTube API for trailer previews.',
@@ -137,25 +161,25 @@ export const projects = [
     ]
   },
   {
-    slug: 'rag-knowledge-pipeline',
-    title: 'RAG Knowledge Retrieval Pipeline',
-    category: 'ai-ml',
-    tracks: ['ai-research'],
-    featured: false,
-    status: 'Planned (Upcoming Portfolio Project)',
+    slug: 'portfolio',
+    title: 'Personal Portfolio & Engineering Showcase',
+    category: 'web',
+    tracks: ['developer'],
+    status: 'Production (live)',
     date: '2026',
-    summary: 'Retrieval-Augmented Generation system with document chunking, hybrid keyword/vector search, and grounded synthesis.',
-    tags: ['RAG', 'Python', 'Vector DB', 'LangChain / LlamaIndex', 'Planned'],
-    githubUrl: 'TBD',
-    liveUrl: 'TBD',
-    role: 'AI Systems Architect',
-    overview: 'Planned next milestone following the Semantic Search Engine: a full-stack RAG pipeline implementing recursive chunking, re-ranking, and grounded generation.',
-    problem: 'Direct LLM queries lack domain-specific private context and hallucinate without verifiable citations.',
-    approach: 'Architecture roadmap includes sentence window retrieval, reciprocal rank fusion (RRF), and citation tracing.',
-    result: 'Roadmapped as project 2 of the 10 planned AI/ML portfolio series.',
+    summary: 'Interactive personal portfolio built with React 19, custom design system tokens, smooth canvas shaders, and targeted resume tracks.',
+    tags: ['React 19', 'Vite', 'CSS3', 'WebGL / Canvas', 'Responsive Design', 'Architecture'],
+    github: 'https://github.com/krishan-gupta/Portfolio',
+    demo: 'https://krishan-gupta.vercel.app',
+    role: 'Web project',
+    overview: 'A performance-focused personal portfolio and project showcase presenting engineering projects, research manuscripts, and multi-track resumes with custom-built typography, interactions, and shader effects.',
+    problem: 'Template-based portfolios often look generic, lack interactive performance, and fail to provide targeted perspectives for distinct engineering roles.',
+    approach: 'Engineered with React 19 and Vite using vanilla CSS design tokens, glassmorphism, responsive clamp typography, shader-based Horizon Bloom and Meteors canvas backgrounds, and targeted role tracks.',
+    result: 'Responsive, zero external UI framework bloat, fast load performance, and custom interactive presentation across all devices.',
     metrics: [
-      { label: 'Status', value: 'Planned' },
-      { label: 'Series', value: 'Project 2 of 10' }
+      { label: 'Framework', value: 'React 19 + Vite' },
+      { label: 'Styling', value: 'Vanilla CSS Tokens' },
+      { label: 'Graphics', value: 'Custom Canvas Shaders' }
     ]
   }
 ];
@@ -165,5 +189,10 @@ export function getProjectBySlug(slug) {
 }
 
 export function getFeaturedProjects() {
-  return projects.filter(p => p.featured);
+  const topSlugs = [
+    'dhobitrack',
+    'neuralabstract-retrieval-engine',
+    'context-preserving-document-editor'
+  ];
+  return topSlugs.map(slug => projects.find(p => p.slug === slug)).filter(Boolean);
 }

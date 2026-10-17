@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from '../../router';
+import { Link, useRoute } from '../../router';
 import { HorizonBloom } from '../../components/HorizonBloom/HorizonBloom';
 import Meteors from '../../components/Meteors/Meteors';
 import { TechText } from '../../components/TechText/TechText';
@@ -11,17 +11,13 @@ import { certifications } from '../../data/certifications';
 import { TechIcon } from '../../components/TechIcon/TechIcon';
 import Grainient from '../../components/Grainient/Grainient';
 import { useReveal } from '../../hooks/useReveal';
-import { useCountUp } from '../../hooks/useCountUp';
 import './Home.css';
 
 function StatTile({ target, suffix = '', label }) {
-  const [ref, isRevealed] = useReveal();
-  const count = useCountUp(target, 1600, isRevealed);
-
   return (
-    <div ref={ref} className="stat-tile">
+    <div className="stat-tile">
       <div className="stat-number">
-        {count.toLocaleString()}
+        {target.toLocaleString()}
         <span className="stat-suffix">{suffix}</span>
       </div>
       <div className="stat-label">{label}</div>
@@ -30,6 +26,7 @@ function StatTile({ target, suffix = '', label }) {
 }
 
 export function HomePage() {
+  const { navigate } = useRoute();
   const featuredProjects = getFeaturedProjects();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
@@ -337,7 +334,7 @@ export function HomePage() {
                 I'm Krishan, a second-year Computer Science student at VIT Chennai, specializing in AI & ML. I like building things people can actually use: a laundry platform designed for 15,000+ students, a noise monitor built on an ESP32, and a hackathon concept for editing text inside photos without leaving your phone.
               </p>
               <p className="about-bio">
-                I started in frontend and I'm moving toward AI/ML and research. I'm Management Lead at NEXUS VIT, where I coordinate events like the Striver talk show, and the web developer for AWS Cloud Club VIT Chennai. I'm also a co-inventor on a patent that has already been transferred to industry.
+                I started in frontend and I'm moving toward AI/ML and research. I'm Management Lead at NEXUS VIT, where I coordinate events like the Striver talk show, and the web developer for AWS Cloud Club VIT Chennai. I'm also an AWS Student Builder Campus Leader at VIT Chennai, introducing students to AWS Builder Center, and a co-inventor on a patent that has already been transferred to industry.
               </p>
               <p className="about-bio">
                 I'm looking for internships and research collaborations.
@@ -348,7 +345,7 @@ export function HomePage() {
                 <StatTile target={projects.length} suffix="" label="Projects" />
                 <StatTile target={1} suffix="" label="Patent filed" />
                 <StatTile target={achievementsData.certifications.length} suffix="" label="Certifications passed" />
-                <StatTile target={1} suffix="" label="AWS Certified" />
+                <StatTile target={1} suffix="x" label="AWS Certified" />
               </div>
             </div>
           </div>
@@ -511,96 +508,103 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Row Group: Hackathons & Competitions */}
-            {achievementsData.competitions && achievementsData.competitions.length > 0 && (
-              <div className="recognition-group">
-                <h3 className="achievement-column-title">Hackathons & Space Competitions</h3>
-                <div className="recognition-cards-grid">
-                  {achievementsData.competitions.map((item) => (
-                    <div key={item.id} className="compact-item-card compact-cert-card">
+            {/* Row Group 2: Certifications & Hackathons (Row-wise, max 2 items per row, 6 items total) */}
+            <div className="recognition-group">
+              <h3 className="achievement-column-title">Certifications & Hackathons</h3>
+              <div className="recognition-cards-grid">
+                {/* 1. ISRO Bharatiya Antariksh Hackathon 2026 as first card */}
+                {achievementsData.competitions && achievementsData.competitions[0] && (() => {
+                  const isro = achievementsData.competitions[0];
+                  const resumeUrl = '/resume#hackathons-competitions';
+                  return (
+                    <div
+                      key={isro.id}
+                      className="compact-item-card compact-cert-card"
+                      onClick={() => navigate(resumeUrl)}
+                      role="link"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          navigate(resumeUrl);
+                        }
+                      }}
+                    >
                       <div className="compact-item-meta">
-                        <span className="compact-item-issuer">{item.issuer}</span>
-                        <span>{item.date}</span>
+                        <div className="compact-issuer-type-wrap">
+                          <span className="compact-item-issuer">ISRO</span>
+                          <span className="compact-type-chip">Hackathon</span>
+                        </div>
+                        <span>{isro.date}</span>
                       </div>
                       <h4 className="compact-item-title">
-                        <Link
-                          to="/resume#hackathons-competitions"
-                          className="compact-item-link"
-                          title={`View ${item.title} in Resume`}
-                        >
-                          {item.title}
+                        <span className="compact-item-link">
+                          {isro.title}
                           <span className="compact-link-icon" aria-hidden="true">→</span>
-                        </Link>
+                        </span>
                       </h4>
-                      <p className="compact-item-desc">{item.description}</p>
-                      <div className="compact-item-actions">
-                        <Link
-                          to="/resume#hackathons-competitions"
-                          className="compact-verify-badge compact-resume-badge"
-                        >
-                          View in Resume →
-                        </Link>
-                        {item.credentialUrl && item.credentialUrl.startsWith('http') && (
+                      <p className="compact-item-desc">{isro.description}</p>
+                      {isro.credentialUrl && isro.credentialUrl.startsWith('http') && (
+                        <div className="compact-item-actions">
                           <a
-                            href={item.credentialUrl}
+                            href={isro.credentialUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="compact-verify-badge compact-external-badge"
                             title="Verify directly on issuing portal"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             Verify Participation ↗
                           </a>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
-                  ))}
-                </div>
-              </div>
-            )}
+                  );
+                })()}
 
-            {/* Row Group 2: Certifications (Row-wise, max 2 items per row) */}
-            <div className="recognition-group">
-              <h3 className="achievement-column-title">Certifications</h3>
-              <div className="recognition-cards-grid">
+                {/* 2-6. The 5 Certifications */}
                 {certifications.map((item) => {
                   const targetTrack = item.tracks?.[0] || 'developer';
                   const resumeUrl = `/resume/${targetTrack}#cert-${item.id}`;
                   return (
-                    <div key={item.id} className="compact-item-card compact-cert-card">
+                    <div
+                      key={item.id}
+                      className="compact-item-card compact-cert-card"
+                      onClick={() => navigate(resumeUrl)}
+                      role="link"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          navigate(resumeUrl);
+                        }
+                      }}
+                    >
                       <div className="compact-item-meta">
                         <span className="compact-item-issuer">{item.issuer}</span>
                         <span>{item.date}</span>
                       </div>
                       <h4 className="compact-item-title">
-                        <Link
-                          to={resumeUrl}
-                          className="compact-item-link"
-                          title={`View ${item.title} in Resume Timeline`}
-                        >
+                        <span className="compact-item-link">
                           {item.title}
                           <span className="compact-link-icon" aria-hidden="true">→</span>
-                        </Link>
+                        </span>
                       </h4>
                       <p className="compact-item-desc">{item.description}</p>
-                      <div className="compact-item-actions">
-                        <Link
-                          to={resumeUrl}
-                          className="compact-verify-badge compact-resume-badge"
-                        >
-                          View in Resume Timeline →
-                        </Link>
-                        {item.credentialUrl && item.credentialUrl.startsWith('http') && (
+                      {item.credentialUrl && item.credentialUrl.startsWith('http') && (
+                        <div className="compact-item-actions">
                           <a
                             href={item.credentialUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="compact-verify-badge compact-external-badge"
                             title="Verify directly on issuing portal"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             Verify Credential ↗
                           </a>
-                        )}
-                      </div>
+                        </div>
+                      )}
                     </div>
                   );
                 })}

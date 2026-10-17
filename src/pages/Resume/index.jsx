@@ -40,10 +40,6 @@ export function ResumePage({ track: initialTrack }) {
     navigate(`/resume/${newTrackId}`);
   };
 
-  const handlePdfDownload = () => {
-    alert(`Resume PDF for track "${currentTrack.label}" is currently TBD. Real PDF will be available soon.`);
-  };
-
   return (
     <div className="resume-page-wrapper">
       {/* Top Header with Calmer Horizon Bloom */}
@@ -76,7 +72,7 @@ export function ResumePage({ track: initialTrack }) {
             />
           </div>
           <p className="resume-subtitle">
-            A dynamic branched curriculum vitae tailored to distinct engineering domains and research specializations.
+            Pick a track to see the resume that fits what you're looking for.
           </p>
 
           {/* Branched Menu Track Switcher */}
@@ -89,54 +85,20 @@ export function ResumePage({ track: initialTrack }) {
 
       {/* Main Track Details */}
       <div className="container">
-        {/* Track Overview Card */}
-        <section className="track-overview-card">
-          <div className="track-overview-top">
-            <div>
-              <span className="section-label">{currentTrack.badge}</span>
-              <h2 className="track-headline">{currentTrack.headline}</h2>
-            </div>
-
-            <div className="track-actions">
-              <button onClick={handlePdfDownload} className="btn btn-primary btn-sm">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                <span>Download {currentTrack.label} PDF (TBD)</span>
-              </button>
-            </div>
+        {/* Track Header (Compact) */}
+        <header className="track-head">
+          <div className="track-head__main">
+            <p className="track-head__label">{currentTrack.label}</p>
+            <h2>{currentTrack.headline}</h2>
+            <p className="track-head__summary">{currentTrack.summary}</p>
+            <p className="track-head__skills">{currentTrack.skills.join(" / ")}</p>
           </div>
-
-          <p className="track-summary-text">{currentTrack.summary}</p>
-
-          {/* Highlighted Skills */}
-          <div style={{ marginTop: '1.75rem' }}>
-            <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', color: 'var(--text-dim)', marginBottom: '0.75rem' }}>
-              SPECIALIZED CAPABILITIES:
-            </div>
-            <div className="skills-tags-cluster">
-              {currentTrack.skillsHighlighted.map((skill) => (
-                <span key={skill} className="highlighted-skill-pill">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Key Track Metrics */}
-          {currentTrack.metrics && (
-            <div className="track-metrics-bar">
-              {currentTrack.metrics.map((m, idx) => (
-                <div key={idx} className="track-metric-box">
-                  <span className="track-metric-val">{m.value}</span>
-                  <span className="track-metric-name">{m.label}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
+          <ul className="track-head__facts">
+            {currentTrack.facts.map((f) => (
+              <li key={f.label}><b>{f.value}</b> {f.label}</li>
+            ))}
+          </ul>
+        </header>
 
         {/* Experience Section */}
         <section className="resume-section">
@@ -152,7 +114,7 @@ export function ResumePage({ track: initialTrack }) {
 
         {/* Education Section */}
         <section className="resume-section">
-          <h2 className="resume-sec-title">Education & Academic Foundations</h2>
+          <h2 className="resume-sec-title">Education</h2>
           {education.map((edu, idx) => (
             <div key={idx} className="education-card">
               <div className="education-header">
@@ -160,15 +122,15 @@ export function ResumePage({ track: initialTrack }) {
                 <span className="education-period">{edu.period}</span>
               </div>
               <div className="education-institution">{edu.institution}</div>
-              <div className="education-honors">✦ {edu.honors}</div>
+              {edu.honors && <div className="education-honors">✦ {edu.honors}</div>}
               <p className="education-details">{edu.details}</p>
             </div>
           ))}
         </section>
 
-        {/* Hackathons & Space Competitions */}
+        {/* Hackathons */}
         <section id="hackathons-competitions" className="resume-section">
-          <h2 className="resume-sec-title">Hackathons & Space Competitions</h2>
+          <h2 className="resume-sec-title">Hackathons</h2>
           <div id="cert-isro-hackathon-2026" className="isro-showcase-card">
             <div className="isro-card-inner">
               <div className="isro-media">
@@ -185,7 +147,7 @@ export function ResumePage({ track: initialTrack }) {
               <div className="isro-body">
                 <div className="isro-meta">
                   <span className="isro-issuer">{isroParticipation.issuer}</span>
-                  <span className="isro-chip-type">National Space Hackathon Participation</span>
+                  <span className="isro-chip-type">{isroParticipation.type}</span>
                   <span className="cert-verified">Verified</span>
                 </div>
                 <h3 className="isro-title">{isroParticipation.title}</h3>

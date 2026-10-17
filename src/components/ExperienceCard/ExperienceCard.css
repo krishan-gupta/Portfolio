@@ -140,6 +140,16 @@
   -webkit-text-fill-color: transparent;
 }
 
+.impact-metric-value--text {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  font-weight: 600;
+  -webkit-text-fill-color: var(--accent);
+  color: var(--accent);
+  background: none;
+}
+
 .impact-metric-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;

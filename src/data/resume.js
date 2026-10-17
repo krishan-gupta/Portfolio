@@ -2,90 +2,63 @@ export const experiences = [
   {
     id: 'exp-1',
     company: 'NEXUS VIT',
-    role: 'Management Lead (Promoted)',
-    location: 'Chennai, India',
-    period: 'Sep 2025 — Present',
+    role: 'Management Lead (promoted)',
+    location: 'Chennai',
+    period: 'Sep 2025 – Present',
     tracks: ['developer', 'leadership'],
     impact: [
-      { label: 'Forum Participants', value: '1,100+' },
-      { label: 'Flagship Events', value: '2' },
-      { label: 'Role Trajectory', value: 'Promoted' }
+      { value: 'Frontend Developer → Management Lead', label: '' },
+      { value: '3', label: 'events coordinated' }
     ],
-    tech: ['Event Coordination', 'Sponsorships', 'Frontend Dev', 'Team Leadership'],
+    tech: ['Event management', 'Sponsorships', 'Frontend development', 'Team leadership'],
     bulletsByTrack: {
-      leadership: [
-        'Promoted from Frontend Developer & Event Coordinator to Management Lead, taking a leading role across flagship chapter operations.',
-        'Coordinated the Nexus Forum Striver Talk Show, driving engagement for 1,100+ student participants.',
-        'Currently organizing Nexathon 2026, spearheading pitch decks, outreach materials, and corporate sponsorship pipelines.',
-        'Coordinated the DECODEX competitive technical event end-to-end on campus.'
-      ],
       developer: [
-        'Served previously as Frontend Developer, crafting web assets and interactive promotional tools for chapter initiatives.',
-        'Promoted to Management Lead while continuing to steer technological execution across collaborative NEXUS projects.',
-        'Engineered responsive web interfaces and coordinated tech deployments for hackathon participants.'
+        'Joined as Frontend Developer and Event Coordinator, then promoted to Management Lead.',
+        "Lead most of NEXUS's technical projects.",
+        "Coordinated DECODEX and the Striver talk show, and handled the management side of V-Medithon 3.0, VIT Chennai's biggest biotechnology hackathon (September 2026)."
+      ],
+      leadership: [
+        'Joined as Frontend Developer and Event Coordinator, then promoted to Management Lead.',
+        "Lead most of NEXUS's technical projects.",
+        "Coordinated DECODEX and the Striver talk show, and handled the management side of V-Medithon 3.0, VIT Chennai's biggest biotechnology hackathon (September 2026)."
       ]
     }
   },
   {
     id: 'exp-2',
-    company: 'CloudOps VITC',
-    role: 'Technical Specialist',
-    location: 'Chennai, India',
-    period: 'Sep 2025 — Present',
-    tracks: ['developer', 'leadership'],
-    impact: [
-      { label: 'Focus Area', value: 'Cloud Foundations' },
-      { label: 'Activities', value: 'Workshops & Labs' }
-    ],
-    tech: ['AWS', 'GCP', 'Linux', 'Cloud Operations'],
+    company: 'AWS Cloud Club VIT Chennai',
+    role: 'Web Developer',
+    location: 'Chennai',
+    period: 'Mar 2026 – Present',
+    tracks: ['developer'],
+    impact: [],
+    tech: ['Event planning', 'Event tech', 'Club projects'],
     bulletsByTrack: {
       developer: [
-        'Active Technical Specialist contributing to cloud operations, hands-on infrastructure workshops, and student labs.',
-        'Operational responsibilities and upcoming chapter projects: Details TBD.'
-      ],
-      leadership: [
-        'Mentoring student peers in cloud-native fundamentals and open-source tooling.',
-        'Operational responsibilities and upcoming chapter projects: Details TBD.'
+        "Help plan the club's events and handle the technical side of them.",
+        "Help with the club's projects."
       ]
     }
   },
   {
     id: 'exp-3',
-    company: 'AWS Cloud Club VIT Chennai',
-    role: 'Web Developer',
-    location: 'Chennai, India',
-    period: 'Mar 2026 — Present',
-    tracks: ['developer'],
+    company: 'AWS Student Builder',
+    role: 'AWS Student Builder Campus Leader',
+    location: 'Chennai',
+    period: 'Aug 2026 – Present',
+    tracks: ['developer', 'leadership'],
     impact: [
-      { label: 'Focus Area', value: 'Web Properties' },
-      { label: 'Affiliation', value: 'AWS Community' }
+      { value: '300+', label: 'students signed up for AWS Builder Center' }
     ],
-    tech: ['React', 'HTML5/CSS3', 'AWS Hosting', 'Vite'],
+    tech: ['Campus outreach', 'AWS Builder Center', 'Community growth'],
     bulletsByTrack: {
       developer: [
-        'Developing and updating web portals and digital interfaces for AWS Cloud Club VIT Chennai.',
-        'Building responsive frontends and coordinating event registrations: Details TBD.'
-      ]
-    }
-  },
-  {
-    id: 'exp-4',
-    company: 'AWS Student Builder, VIT Chennai',
-    role: 'AWS Student Builder Campus Leader (Selected Participant)',
-    location: 'Chennai, India',
-    period: '3 Aug — 11 Sep 2026',
-    tracks: ['leadership'],
-    impact: [
-      { label: 'Student Sign-ups', value: '300+' },
-      { label: 'Programme Type', value: 'Campus Leader' },
-      { label: 'Outreach', value: 'VIT Chennai' }
-    ],
-    tech: ['AWS Builder Center', 'Campus Outreach', 'Community Growth'],
-    bulletsByTrack: {
+        'Promote AWS Builder Center to students at VIT Chennai through campus events and social media.',
+        '300+ students signed up through my link.'
+      ],
       leadership: [
-        'Selected to participate in the prestigious AWS Student Builder Campus Leader programme to champion the AWS Builder Center.',
-        'Promoted cloud learning resources, driving 300+ verifiable student sign-ups across VIT Chennai.',
-        'Guided students through foundational cloud learning modules and certification preparation pathways.'
+        'Promote AWS Builder Center to students at VIT Chennai through campus events and social media.',
+        '300+ students signed up through my link.'
       ]
     }
   }
@@ -93,11 +66,11 @@ export const experiences = [
 
 export const education = [
   {
-    degree: 'B.Tech in Computer Science and Engineering (AI & ML Specialization)',
+    degree: 'B.Tech in Computer Science and Engineering (AI & ML specialization)',
     institution: 'Vellore Institute of Technology (VIT), Chennai',
     period: 'Expected May 2029',
-    honors: 'Second-Year Undergraduate Student',
-    details: 'Focusing on Practical AI/ML applications, Deep Learning, Cloud Computing, and Interactive Web Engineering. Actively participating in competitive hackathons and student leadership.'
+    honors: 'Second-year undergraduate',
+    details: 'Coursework includes operating systems and database systems.'
   }
 ];
 

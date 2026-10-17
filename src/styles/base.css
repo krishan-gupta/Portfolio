@@ -141,7 +141,8 @@ code, pre, .mono {
 }
 
 .section {
-  padding: 6.5rem 0;
+  padding-block: clamp(56px, 7vw, 96px);
+  padding-inline: 0;
   position: relative;
   z-index: 1;
 }
@@ -150,17 +151,14 @@ code, pre, .mono {
   .container {
     padding: 0 1.15rem;
   }
-  .section {
-    padding: 3.75rem 0;
-  }
   .section-header {
-    margin-bottom: 2.25rem;
+    margin-bottom: 24px;
   }
 }
 
 /* Section Header */
 .section-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: 32px;
 }
 
 .section-label {

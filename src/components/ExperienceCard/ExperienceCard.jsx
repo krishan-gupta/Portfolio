@@ -29,13 +29,15 @@ export function ExperienceCard({ experience }) {
         </ul>
 
         {/* Tech Chips */}
-        <div className="experience-tech-row">
-          {experience.tech.map((t) => (
-            <span key={t} className="tag-chip">
-              {t}
-            </span>
-          ))}
-        </div>
+        {experience.tech && experience.tech.length > 0 && (
+          <div className="experience-tech-row">
+            {experience.tech.map((t) => (
+              <span key={t} className="tag-chip">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Side Impact Panel */}
@@ -45,8 +47,16 @@ export function ExperienceCard({ experience }) {
           <div className="impact-metrics-list">
             {experience.impact.map((metric, idx) => (
               <div key={idx} className="impact-metric-item">
-                <span className="impact-metric-value">{metric.value}</span>
-                <span className="impact-metric-label">{metric.label}</span>
+                <span
+                  className={`impact-metric-value ${
+                    metric.value.length > 8 ? 'impact-metric-value--text' : ''
+                  }`}
+                >
+                  {metric.value}
+                </span>
+                {metric.label ? (
+                  <span className="impact-metric-label">{metric.label}</span>
+                ) : null}
               </div>
             ))}
           </div>

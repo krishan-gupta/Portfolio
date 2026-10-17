@@ -32,87 +32,64 @@
   color: var(--text-muted);
 }
 
-/* Track Overview Header Card */
-.track-overview-card {
-  background: var(--bg-elev);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: 2.75rem 3rem;
-  margin-bottom: 3.5rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-}
-
-.track-overview-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-accent);
-}
-
-.track-overview-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.track-headline {
-  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.25;
-  max-width: 760px;
-  margin-top: 0.5rem;
-}
-
-.track-summary-text {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: 820px;
-}
-
-.track-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Track Metrics Bar */
-.track-metrics-bar {
+/* Track Head (Compact Header) */
+.track-head {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: 2rem;
+  grid-template-columns: 1fr minmax(220px, 300px);
+  gap: 2rem;
+  padding: 1.5rem 0 1.75rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
 }
-
-.track-metric-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.track-metric-val {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 800;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.track-metric-name {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.track-head__label {
+  margin: 0 0 .5rem;
+  font: 500 .72rem/1 var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--text-muted);
+}
+.track-head h2 {
+  margin: 0 0 .75rem;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  max-width: 22ch;
+  color: #ffffff;
+}
+.track-head__summary {
+  margin: 0 0 1rem;
+  max-width: 60ch;
+  color: rgba(245, 239, 232, .82);
+  line-height: 1.6;
+}
+.track-head__skills {
+  margin: 0;
+  font: 400 .8rem/1.7 var(--font-mono);
+  color: var(--text-muted);
+}
+.track-head__facts {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.5rem;
+  border-left: 1px solid var(--border);
+  display: grid;
+  gap: .6rem;
+  align-content: start;
+  font: 400 .85rem/1.4 var(--font-mono);
+  color: var(--text-muted);
+}
+.track-head__facts b {
+  color: var(--accent);
+  font-weight: 600;
+  margin-right: .35rem;
+}
+@media (max-width: 720px) {
+  .track-head {
+    grid-template-columns: 1fr;
+  }
+  .track-head__facts {
+    padding: 1rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
 }
 
 /* Resume Section Headers */
@@ -306,19 +283,6 @@
   margin-top: 0.5rem;
 }
 
-@media (max-width: 820px) {
-  .track-overview-card {
-    padding: 2rem 1.5rem;
-  }
-  .track-overview-top {
-    flex-direction: column;
-  }
-  .track-metrics-bar {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-}
-
 @media (max-width: 600px) {
   .resume-page-wrapper {
     padding-top: calc(var(--nav-height) + 1rem);
@@ -332,23 +296,6 @@
   .resume-subtitle {
     font-size: 0.95rem;
   }
-  .track-headline {
-    font-size: 1.4rem;
-    word-break: break-word;
-  }
-  .track-summary-text {
-    font-size: 0.92rem;
-    line-height: 1.65;
-  }
-  .track-actions {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-  .track-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
   .resume-sec-title {
     font-size: 1.35rem;
     margin-bottom: 1.25rem;
@@ -359,14 +306,6 @@
   }
   .education-card {
     padding: 1.25rem 1rem;
-  }
-  .track-overview-card {
-    padding: 1.35rem 1rem;
-    margin-bottom: 2.5rem;
-  }
-  .highlighted-skill-pill {
-    padding: 0.38rem 0.75rem;
-    font-size: 0.78rem;
   }
   .isro-card-inner {
     grid-template-columns: 1fr;
