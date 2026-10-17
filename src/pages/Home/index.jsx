@@ -508,61 +508,66 @@ export function HomePage() {
               </div>
             </div>
 
-            {/* Row Group 2: Certifications & Hackathons (Row-wise, max 2 items per row, 6 items total) */}
-            <div className="recognition-group">
-              <h3 className="achievement-column-title">Certifications & Hackathons</h3>
-              <div className="recognition-cards-grid">
-                {/* 1. ISRO Bharatiya Antariksh Hackathon 2026 as first card */}
-                {achievementsData.competitions && achievementsData.competitions[0] && (() => {
-                  const isro = achievementsData.competitions[0];
-                  const resumeUrl = '/resume#hackathons-competitions';
-                  return (
-                    <div
-                      key={isro.id}
-                      className="compact-item-card compact-cert-card"
-                      onClick={() => navigate(resumeUrl)}
-                      role="link"
-                      tabIndex={0}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                          e.preventDefault();
-                          navigate(resumeUrl);
-                        }
-                      }}
-                    >
-                      <div className="compact-item-meta">
-                        <div className="compact-issuer-type-wrap">
-                          <span className="compact-item-issuer">ISRO</span>
-                          <span className="compact-type-chip">Hackathon</span>
+            {/* Row Group 2: Hackathons */}
+            {achievementsData.competitions && achievementsData.competitions.length > 0 && (
+              <div className="recognition-group">
+                <h3 className="achievement-column-title">Hackathons</h3>
+                <div className="recognition-cards-grid">
+                  {achievementsData.competitions.map((item) => {
+                    const resumeUrl = '/resume#hackathons-competitions';
+                    return (
+                      <div
+                        key={item.id}
+                        className="compact-item-card compact-cert-card"
+                        onClick={() => navigate(resumeUrl)}
+                        role="link"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            navigate(resumeUrl);
+                          }
+                        }}
+                      >
+                        <div className="compact-item-meta">
+                          <div className="compact-issuer-type-wrap">
+                            <span className="compact-item-issuer">ISRO</span>
+                            <span className="compact-type-chip">Hackathon</span>
+                          </div>
+                          <span>{item.date}</span>
                         </div>
-                        <span>{isro.date}</span>
+                        <h4 className="compact-item-title">
+                          <span className="compact-item-link">
+                            {item.title}
+                            <span className="compact-link-icon" aria-hidden="true">→</span>
+                          </span>
+                        </h4>
+                        <p className="compact-item-desc">{item.description}</p>
+                        {item.credentialUrl && item.credentialUrl.startsWith('http') && (
+                          <div className="compact-item-actions">
+                            <a
+                              href={item.credentialUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="compact-verify-badge compact-external-badge"
+                              title="Verify directly on issuing portal"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              Verify Participation ↗
+                            </a>
+                          </div>
+                        )}
                       </div>
-                      <h4 className="compact-item-title">
-                        <span className="compact-item-link">
-                          {isro.title}
-                          <span className="compact-link-icon" aria-hidden="true">→</span>
-                        </span>
-                      </h4>
-                      <p className="compact-item-desc">{isro.description}</p>
-                      {isro.credentialUrl && isro.credentialUrl.startsWith('http') && (
-                        <div className="compact-item-actions">
-                          <a
-                            href={isro.credentialUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="compact-verify-badge compact-external-badge"
-                            title="Verify directly on issuing portal"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            Verify Participation ↗
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })()}
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
-                {/* 2-6. The 5 Certifications */}
+            {/* Row Group 3: Certifications */}
+            <div className="recognition-group">
+              <h3 className="achievement-column-title">Certifications</h3>
+              <div className="recognition-cards-grid">
                 {certifications.map((item) => {
                   const targetTrack = item.tracks?.[0] || 'developer';
                   const resumeUrl = `/resume/${targetTrack}#cert-${item.id}`;

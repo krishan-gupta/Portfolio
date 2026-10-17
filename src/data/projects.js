@@ -162,7 +162,7 @@ export const projects = [
   },
   {
     slug: 'portfolio',
-    title: 'Personal Portfolio & Engineering Showcase',
+    title: 'Personal Portfolio',
     category: 'web',
     tracks: ['developer'],
     status: 'Production (live)',
